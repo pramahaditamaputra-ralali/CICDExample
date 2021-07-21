@@ -14,6 +14,7 @@
 		28ED633E49705E2049727976 /* libPods-CICDExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 180C04B1C84478BD429F2144 /* libPods-CICDExample.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B160C94DBE8BAA4A3C85EE11 /* libPods-CICDExample-CICDExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2489E9149E9203A15470FF /* libPods-CICDExample-CICDExampleTests.a */; };
+		C328F71D26A882D90090AF85 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = C328F71C26A882D90090AF85 /* AppCenter-Config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CICDExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86E9DF7AEFECD4E307C527F6 /* Pods-CICDExample-CICDExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CICDExample-CICDExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-CICDExample-CICDExampleTests/Pods-CICDExample-CICDExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A875462B7766F1EC0AC528F3 /* Pods-CICDExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CICDExample.release.xcconfig"; path = "Target Support Files/Pods-CICDExample/Pods-CICDExample.release.xcconfig"; sourceTree = "<group>"; };
+		C328F71C26A882D90090AF85 /* AppCenter-Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AppCenter-Config.plist"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -104,7 +106,6 @@
 				86E9DF7AEFECD4E307C527F6 /* Pods-CICDExample-CICDExampleTests.debug.xcconfig */,
 				5D9901FE4C1075F3BFD0E259 /* Pods-CICDExample-CICDExampleTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -128,6 +129,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				C328F71C26A882D90090AF85 /* AppCenter-Config.plist */,
 				13B07FAE1A68108700A75B9A /* CICDExample */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* CICDExampleTests */,
@@ -245,6 +247,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				C328F71D26A882D90090AF85 /* AppCenter-Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
