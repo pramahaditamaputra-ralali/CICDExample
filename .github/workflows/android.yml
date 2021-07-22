@@ -1,30 +1,48 @@
-name: Android
+name: Build Android
 
-on: [pull_request]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  build:
-    runs-on: ubuntu-20.04
+  beta-distribution:
+    runs-on: ubuntu-latest
+    name: Beta Distribution
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js v14
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+      - uses: c-hive/gha-yarn-cache@v1
 
-      - name: Cache npm dependencies
+      - name: Install node modules
+        run: |
+          yarn install
+      - name: Run test
+        run: |
+          yarn test-ci
+      - name: Cache Gradle Wrapper
         uses: actions/cache@v2
         with:
-          path: '~/.npm'
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - run: npm install
-      - run: ./gradlew assembleDebug -Dorg.gradle.logging.level=info
-        working-directory: android
-        name: Build Android apk (debug)
+          path: ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
-      - uses: actions/upload-artifact@v2
+      - name: Cache Gradle Dependencies
+        uses: actions/cache@v2
         with:
-          name: android-apk
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-caches-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-caches-
+      - name: Make Gradlew Executable
+        run: cd android && chmod +x ./gradlew
+
+      - name: Build Android App Bundle
+        run: |
+          cd android && ./gradlew assembleDebug --no-daemon
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Signed App Bundle
           path: '**/*.apk'
