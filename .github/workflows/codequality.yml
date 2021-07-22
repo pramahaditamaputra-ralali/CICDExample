@@ -1,23 +1,23 @@
-name: CodeQuality
+name: Continuous Integration
 
-on: [pull_request]
+on:
+  pull_request:
+    branches:
+      - master
 
 jobs:
-  check:
-    runs-on: ubuntu-20.04
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js v14
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+      - uses: c-hive/gha-yarn-cache@v1
 
-      - name: Cache npm dependencies
-        uses: actions/cache@v2
-        with:
-          path: '~/.npm'
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - run: npm install
-      - run: npm run jest
+      - name: Install node modules
+        run: |
+          yarn install
+      - name: Run test
+        run: |
+          yarn jest
