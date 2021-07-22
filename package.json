@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "npm run static-code-analysis && npm run dynamic-code-analysis",
+    "test": "npm run dynamic-code-analysis",
     "static-code-analysis": "npm run typecoverage && npm run tslint && npm run prettier",
     "dynamic-code-analysis": "jest --coverage",
     "typecoverage": "type-coverage -p src --detail",
