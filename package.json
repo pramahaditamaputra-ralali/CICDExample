@@ -3,11 +3,19 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint ."
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "npm run static-code-analysis && npm run dynamic-code-analysis",
+    "static-code-analysis": "npm run typecoverage && npm run tslint && npm run prettier",
+    "dynamic-code-analysis": "jest --coverage",
+    "typecoverage": "type-coverage -p src --detail",
+    "tslint": "tslint -p src",
+    "prettier": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "jest": "jest",
+    "bundle:android": "mkdir -p android/app/src/main/assets && react-native bundle --platform android --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "run:android": "react-native run-android",
+    "android": "npm run bundle:android && npm run run:android",
+    "ios": "react-native run-ios"
   },
   "dependencies": {
     "appcenter": "^4.2.0",
