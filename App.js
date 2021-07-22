@@ -81,7 +81,7 @@ const App = () => {
             <DebugInstructions />
           </Section>
           <Section title="Learn More">
-            Read the docs to discover wat to do next:
+            Read the docssss to discover wat to do next:
           </Section>
           <LearnMoreLinks />
         </View>
